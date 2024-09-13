@@ -1,113 +1,208 @@
+import View from "@/@ui/_view";
+import { Button } from "@/components/ui/button";
+import { about, programs, services } from "@/data/home";
 import Image from "next/image";
+import { LuCheck } from "react-icons/lu";
+import { Center, Component } from "@/@ui/component";
+import { Contact } from "@/@ui/form/contact";
+
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
+    <View>
+      <Hero />
+      <Services />
+      <Program />
+      <About />
+      <Contact />
+      <Footer />
+    </View>
+  );
+}
+
+const data = {
+  intro: `Redefining Your Musical Journey`,
+};
+
+function Hero() {
+  return (
+    <section id="home" className="w-full min-h-screen bg-hero-bg bg-cover relative">
+      <div className="absolute w-full h-full bg-black/50">
+        <article className="w-full h-full flex justify-center items-center max-w-6xl mx-auto py-5">
+          <div className="w-[450px] text-center">
+            <h2 className="text-4xl text-white font-semibold">{data.intro}</h2>
+            <Button className="bg-primary-900 my-5 px-7 py-3 hover:bg-primary-950 text-primary-50">
+              Learn More
+            </Button>
+          </div>
+        </article>
+      </div>
+    </section>
+  );
+}
+
+function Services() {
+  return (
+    <Component>
+      <Center className="w-full h-full py-16 px-5 md:px-0">
+        <article id="services">
+          <h2 className="text-2xl font-semibold my-5">Our Services</h2>
+          <div className="text-xl">
+            We offer a variety of music lessons tailored to your needs. Whether
+            you’re a beginner or an advanced musician, we have something for
+            everyone.
+          </div>
+        </article>
+        <section className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-10">
+          {services.map((service) => (
+            <div
+              key={service.id}
+              className="relative w-full h-64 border cursor-pointer"
+            >
+              <Image
+                src={service.image}
+                alt=""
+                height={300}
+                width={300}
+                className="relative w-full h-full object-cover object-center"
+              />
+              <div className="absolute top-0 w-full h-full flex flex-col gap-2 items-center justify-center p-3 bg-black/50 hover:bg-black/70 transition-all ease-in-out">
+                <h2 className="text-xl font-semibold text-white">
+                  {service.title}
+                </h2>
+                <p className="text-center text-pretty text-white">
+                  {service.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </section>
+      </Center>
+    </Component>
+  );
+}
+
+function Program() {
+  return (
+    <Component>
+      <Center className="w-full h-full py-16 px-5 md:px-0">
+        <article id="program">
+          <h2 className="text-2xl font-semibold my-5">Our Program</h2>
+          <div className="text-xl">
+            Our programs are designed to help you achieve your musical goals.
+            Explore our offerings and find the perfect fit for you.
+          </div>
+        </article>
+
+        <section className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-10">
+          {programs.map((program) => (
+            <div
+              key={program.id}
+              className="w-full border min-h-64 flex flex-col gap-2 items-center justify-center p-3 bg-white"
+            >
+              <h2 className="text-xl font-semibold text-primary-800">
+                {program.title}
+              </h2>
+              <p className="text-center text-pretty text-primary-700">
+                {program.description}
+              </p>
+            </div>
+          ))}
+        </section>
+      </Center>
+    </Component>
+  );
+}
+
+function About() {
+  return (
+    <Component>
+      <article
+        id="about"
+        className="my-14 p-20 bg-primary-500 text-primary-50 px-5 md:px-0"
+      >
+        <Center>
+          <div className="flex flex-col md:flex-row justify-between gap-5 items-center">
+            <section className="w-full md:w-1/2">
+              <h2 className="text-2xl font-semibold my-5">{about.headline}</h2>
+              <div className="text-xl">{about.description}</div>
+            </section>
+            <section className="py-5">
+              <Image
+                src={about.image}
+                alt=""
+                width={400}
+                height={400}
+                className="w-[300px] h-[300px] object-cover object-center"
+              />
+            </section>
+          </div>
+        </Center>
+      </article>
+      <Center className="px-5 md:px-0">
+        <article className="flex flex-col md:flex-row justify-between items-center">
+          <section>
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+              src={about.image}
+              alt=""
+              width={400}
+              height={400}
+              className="w-[500px] h-[500px] object-cover object-center"
             />
-          </a>
-        </div>
-      </div>
+          </section>
+          <section className="w-full md:w-1/2">
+            <h2 className="text-2xl font-semibold my-5">Our Mission</h2>
+            <div className="text-xl space-y-3">
+              <p>
+                {" "}
+                Fastbeet Music School, founded in 2021, is dedicated to
+                connecting students with exceptional teachers for live music
+                lessons, both online and in-person.
+              </p>
+              <p>
+                Our mission is simple: We aim to help students achieve their
+                best while ensuring fair treatment for our teachers. Fastbeet
+                Music School is designed for all ages and adheres to the highest
+                standards of online education.
+              </p>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
+              <div>
+                <h3>Join us!</h3>
+                <ul className="">
+                  {about.misson.actions.map((action, index) => (
+                    <li key={index} className="flex gap-2 items-center">
+                      <LuCheck className="text-primary-900 text-sm" />
+                      <span>{action}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
+        </article>
+      </Center>
+      <section className="mt-16 h-56 bg-primary-500 text-white">
+        <Center className="w-full h-full flex justify-center items-center">
+          <p className="text-pretty text-center text-white text-2xl font-semibold p-5">
+            “Music can change the world because it can change people.” — Bono
           </p>
-        </a>
+        </Center>
+      </section>
+    </Component>
+  );
+}
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+function Footer() {
+  return (
+    <footer className="border-t-2">
+      <Center className="text-center">
+        <p className="p-5">
+          &copy; {new Date(Date.now()).getFullYear()} Fastbeet Music. All Rights
+          Reserved.
+        </p>
+      </Center>
+    </footer>
   );
 }
