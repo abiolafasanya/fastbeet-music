@@ -6,8 +6,8 @@ import { Toaster } from "@/components/ui/sonner";
 const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Fastbeetech",
-  description: "Software Development Company, In Nigeria",
+  title: "Fastbeet Music",
+  description: "Music Lesson and Training",
 };
 
 export default function RootLayout({
