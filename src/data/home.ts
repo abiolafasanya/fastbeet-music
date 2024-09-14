@@ -70,6 +70,14 @@ const about = {
     },
   ],
   misson: {
+    title: "Our Mission",
+    description: `Fastbeet Music School, founded in 2021, is dedicated to
+                connecting students with exceptional teachers for live music
+                lessons, both online and in-person.`,
+    content: ` Our mission is simple: We aim to help students achieve their
+                best while ensuring fair treatment for our teachers. Fastbeet
+                Music School is designed for all ages and adheres to the highest
+                standards of online education.`,
     actions: [
       "Find your ideal music teacher",
       "Learn more about teaching at Fastbeet Music School",

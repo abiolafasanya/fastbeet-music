@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   Form,
   FormControl,
@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useContactForm } from "@/app/hooks/form/contact";
-import { Center, Component } from "../component";
+import { Center, Component, Heading } from "../component";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
@@ -22,11 +22,11 @@ export function Contact() {
     <Component>
       <Center className="w-full h-full pt-16 pb-10 px-5 md:px-0">
         <article id="contact">
-          <h2 className="text-2xl font-semibold my-5">Get in Touch</h2>
-          <div className="text-xl">
-            We’d love to hear from you! Whether you have questions, need more
-            information, or want to schedule a lesson, feel free to reach out.
-          </div>
+          <Heading
+            title="Get in Touch"
+            body="We’d love to hear from you! Whether you have questions, need more
+            information, or want to schedule a lesson, feel free to reach out."
+          />
           <section className="flex flex-col md:flex-row items-center justify-center gap-10 my-5">
             <Image
               src={"/contact.jpg"}

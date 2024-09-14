@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import { about, programs, services } from "@/data/home";
 import Image from "next/image";
 import { LuCheck } from "react-icons/lu";
-import { Center, Component } from "@/@ui/component";
+import { Center, Component, Heading } from "@/@ui/component";
 import { Contact } from "@/@ui/form/contact";
-
+import { Login, LoginButton } from "@/@ui/form/login";
 
 export default function Home() {
   return (
@@ -16,6 +16,7 @@ export default function Home() {
       <About />
       <Contact />
       <Footer />
+      <Login />
     </View>
   );
 }
@@ -26,14 +27,15 @@ const data = {
 
 function Hero() {
   return (
-    <section id="home" className="w-full min-h-screen bg-hero-bg bg-cover relative">
+    <section
+      id="home"
+      className="w-full min-h-screen bg-hero-bg bg-cover relative"
+    >
       <div className="absolute w-full h-full bg-black/50">
         <article className="w-full h-full flex justify-center items-center max-w-6xl mx-auto py-5">
           <div className="w-[450px] text-center">
             <h2 className="text-4xl text-white font-semibold">{data.intro}</h2>
-            <Button className="bg-primary-900 my-5 px-7 py-3 hover:bg-primary-950 text-primary-50">
-              Learn More
-            </Button>
+            <LoginButton>Get Started</LoginButton>
           </div>
         </article>
       </div>
@@ -45,14 +47,13 @@ function Services() {
   return (
     <Component>
       <Center className="w-full h-full py-16 px-5 md:px-0">
-        <article id="services">
-          <h2 className="text-2xl font-semibold my-5">Our Services</h2>
-          <div className="text-xl">
-            We offer a variety of music lessons tailored to your needs. Whether
+        <Heading
+          id="services"
+          title="Our Services"
+          body={`We offer a variety of music lessons tailored to your needs. Whether
             you’re a beginner or an advanced musician, we have something for
-            everyone.
-          </div>
-        </article>
+            everyone.`}
+        />
         <section className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-10">
           {services.map((service) => (
             <div
@@ -86,13 +87,12 @@ function Program() {
   return (
     <Component>
       <Center className="w-full h-full py-16 px-5 md:px-0">
-        <article id="program">
-          <h2 className="text-2xl font-semibold my-5">Our Program</h2>
-          <div className="text-xl">
-            Our programs are designed to help you achieve your musical goals.
-            Explore our offerings and find the perfect fit for you.
-          </div>
-        </article>
+        <Heading
+          id="program"
+          title="Our Program"
+          body={`Our programs are designed to help you achieve your musical goals.
+            Explore our offerings and find the perfect fit for you.`}
+        />
 
         <section className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-10">
           {programs.map((program) => (
@@ -151,20 +151,12 @@ function About() {
             />
           </section>
           <section className="w-full md:w-1/2">
-            <h2 className="text-2xl font-semibold my-5">Our Mission</h2>
+            <h2 className="text-2xl font-semibold my-5 text-primary-500">
+              {about.misson.title}
+            </h2>
             <div className="text-xl space-y-3">
-              <p>
-                {" "}
-                Fastbeet Music School, founded in 2021, is dedicated to
-                connecting students with exceptional teachers for live music
-                lessons, both online and in-person.
-              </p>
-              <p>
-                Our mission is simple: We aim to help students achieve their
-                best while ensuring fair treatment for our teachers. Fastbeet
-                Music School is designed for all ages and adheres to the highest
-                standards of online education.
-              </p>
+              <p>{about.misson.description}</p>
+              <p>{about.misson.content}</p>
 
               <div>
                 <h3>Join us!</h3>
@@ -191,8 +183,6 @@ function About() {
     </Component>
   );
 }
-
-
 
 function Footer() {
   return (

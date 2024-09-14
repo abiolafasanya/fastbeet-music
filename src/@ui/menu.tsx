@@ -1,4 +1,5 @@
 "use client";
+import { useLogin } from "@/app/hooks/form/login";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React, { Fragment, useState } from "react";
@@ -13,6 +14,7 @@ const menuData = [
 ];
 
 export default function Menu() {
+  const { toggleOpenLoginModal } = useLogin();
   return (
     <div>
       <menu className="hidden md:flex items-center space-x-4">
@@ -27,7 +29,10 @@ export default function Menu() {
               </Link>
             </li>
           ))}
-          <Button className="bg-primary-500 hover:bg-primary-500/90">
+          <Button
+            className="bg-primary-500 hover:bg-primary-500/90"
+            onClick={toggleOpenLoginModal}
+          >
             Log In
           </Button>
         </Fragment>
@@ -38,6 +43,7 @@ export default function Menu() {
 }
 
 function MobileMenu() {
+  const { toggleOpenLoginModal } = useLogin();
   const [open, setOpen] = useState(false);
   function toggle() {
     return setOpen((open) => !open);
@@ -60,7 +66,10 @@ function MobileMenu() {
                 </Link>
               </li>
             ))}
-            <Button className="my-3 mx-3 bg-primary-500 hover:bg-primary-500/90">
+            <Button
+              className="my-3 mx-3 bg-primary-500 hover:bg-primary-500/90"
+              onClick={toggleOpenLoginModal}
+            >
               Log In
             </Button>
           </Fragment>
