@@ -1,4 +1,33 @@
 @tailwind base;
+:root {
+  --primary: #f1f0fe;
+  --secondary: #9ca3af;
+  /* --secondary: #9b93f5; */
+  --plus-jakarta-sans-font: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 14px;
+  border: 3px solid var(--primary);
+}
+
 @tailwind components;
 @tailwind utilities;
 

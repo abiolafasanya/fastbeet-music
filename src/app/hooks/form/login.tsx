@@ -5,6 +5,7 @@ import { useForm, UseFormReturn } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 interface ILoginContext {
   openLoginModal: boolean;
@@ -33,6 +34,7 @@ export default function LoginContextProvider({
   children: ReactNode;
 }) {
   const [openLoginModal, setOpenLoginModal] = useState(false);
+  const router = useRouter()
   function toggleOpenLoginModal() {
     return setOpenLoginModal((open) => !open);
   }
@@ -51,7 +53,9 @@ export default function LoginContextProvider({
     // ✅ This will be type-safe and validated.
     console.log(values);
     form.reset();
-    toast("Message sent, We will get back back to you soon.");
+    toast("Registration was successful, welcome to fastbeet music", {position: "top-right"});
+    router.push('/dashboard')
+    toggleOpenLoginModal()
   }
 
   const values = {
