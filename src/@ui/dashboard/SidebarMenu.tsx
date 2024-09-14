@@ -8,7 +8,7 @@ export default function SidebarMenu() {
       <menu id="top-menu" className="h-[80%] flex flex-col gap-4">
         {data.menus.map((menu) => (
           <Link
-            id={menu.id.toString()}
+            key={menu.id}
             href={menu.url}
             className="flex gap-2 items-center text-base"
           >
@@ -21,7 +21,7 @@ export default function SidebarMenu() {
       <menu id="bottom-menu" className="h-[20%] flex flex-col gap-4 ">
         {data.buttonMenu.map((menu) => (
           <Link
-            id={menu.id.toString()}
+            key={menu.id}
             href={menu.url}
             className="flex gap-2 items-center text-base"
           >

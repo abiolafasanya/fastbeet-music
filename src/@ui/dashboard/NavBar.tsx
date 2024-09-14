@@ -18,7 +18,7 @@ export default function NavBar() {
       <menu className="flex gap-10">
         {data.menus.map((menu) => (
           <Link
-            id={menu.id.toString()}
+            key={menu.id}
             href={menu.url}
             className="flex gap-2 items-center text-base text-gray-500"
           >
